@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Aceleracão e movimentação
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-button color="dark" (click) ="getGeolocation()" >Pega Location fixa</ion-button> 
+
+  
+  <ion-button (click)="Alerta()">Alerta</ion-button>
+
+  <ion-button (click)="watchLocation()">
+    Pega Location em Tempo Real
+  </ion-button>
+  <!--<ion-button (click)="stopLocationWatch()">
+    Stop Location Watch
+  </ion-button>-->
+
+  <!-- <div *ngIf="this.geoLatitude">-->
+  <div>
+
+    <ion-item>
+      <ion-label>X Latitude</ion-label>
+      <ion-input type="text" [(ngModel)]="geoLatitude"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>X Longitude</ion-label>
+      <ion-input type="text" [(ngModel)]="geoLongitude"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>X speed</ion-label>
+      <ion-input type="text" [(ngModel)]="speed"></ion-input>
+    </ion-item>
+
+    <!--<p>Latitude : {{geoLatitude}}</p>
+    <p>Longitude : {{geoLongitude}}</p>
+    --<p>Accuracy : {{geoAccuracy}}</p>
+    <p>speed : {{speed}}</p>-->
+    <p class="address-text">
+
+      <span class="watch-text" *ngIf="isWatching; else notWatching">
+        Watching Location
+      </span>
+
+
+      <br>Address : {{geoAddress }}
+    </p>
+  </div>
+
+
+
+  <!--===========gyrascope ===============-->
+
+  <ion-button color="dark" (click) ="gyrascope()" >gyrascope</ion-button> 
+
+  <ion-item>
+    <ion-label>X orientation</ion-label>
+    <ion-input type="text" [(ngModel)]="xOrient"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Y orientation</ion-label>
+    <ion-input type="text" [(ngModel)]="yOrient"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Z orientation</ion-label>
+    <ion-input type="text" [(ngModel)]="zOrient"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Time Stamp</ion-label>
+    <ion-input type="text" [(ngModel)]="timestamp"></ion-input>
+  </ion-item>
+
+  <ion-button color="dark" (click) ="acelera()" >aceleraçao dispositivo</ion-button> 
+
+  
+
+  <ion-item>
+    <ion-label>Acceleration X</ion-label>
+    <ion-input type="text" [(ngModel)]="accX"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Acceleration Y</ion-label>
+    <ion-input type="text" [(ngModel)]="accY"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Acceleration Z</ion-label>
+    <ion-input type="text" [(ngModel)]="accZ"></ion-input>
+  </ion-item>
+
+<!--========================================-->
+
+
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "AlertaSMS",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
