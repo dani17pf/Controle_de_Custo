@@ -1,6 +1,9 @@
 export interface Cadastro {
-     id?: string;
-    name?: string;
-    telefone?: string;
-    email?: string;
+    id?: string;
+    marca ?: string;
+    modelo ?: string;
+    placa?: string;
+    cor?: string;
+    ano?: string;
+    chassi?: string;
 }

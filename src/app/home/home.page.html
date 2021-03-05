@@ -1,62 +1,138 @@
 <ion-header>
-
-
-  <ion-toolbar color="warning">
-    <ion-button  shape="round" color="dark" (click)="loadMap()">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-icon slot="start" name="locate"></ion-icon>
-      atualiza
-    </ion-button>
-    <ion-title slot="end">Google Map</ion-title>
-  </ion-toolbar>
-
-  <!--<ion-toolbar color="warning">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Meus Veiculos
     </ion-title>
-  </ion-toolbar> -->
-
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
-  <div class="map-wrapper">
-    <div id="map_center">
-      <img src="assets/icon/location-marker.png" />
-    </div>
-    <div #map id="map"></div>
-  </div>
+<ion-content class="ion-padding">
+  <ion-list *ngIf="!cadastros.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
   
+
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let cadastro of cadastros">
+      <ion-item button [routerLink]="['/cadastro', cadastro.id]">
+        <!--<ion-avatar slot="start">
+         //espaço pra colocar imagens dos contatos
+        </ion-avatar>-->
+
+
+
+
+        <ion-item lines="full">
+          <ion-thumbnail slot="start">
+            <img src="assets\icon\carro.png">
+          </ion-thumbnail>
+          <ion-label> Marca
+
+            <p>{{ cadastro.marca }}</p>
+            <ion-label> Modelo
+              <p>{{ cadastro.modelo }}</p>
+            </ion-label>
+            <ion-label> Placa
+              <p>{{ cadastro.placa }}</p>
+            </ion-label>
+            <ion-label> Cor
+              <p>{{ cadastro.cor }}</p>
+            </ion-label>
+            <ion-label> Ano
+              <p>{{ cadastro.ano }}</p>
+            </ion-label>
+            <ion-label> Chassi
+              <p>{{ cadastro.chassi }}</p>
+            </ion-label>
+
+          </ion-label>
+          
+        </ion-item>
+
+
+
+      </ion-item>
+
+
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteCadastros(cadastro.id)">
+          <ion-icon slot="top" name="trash"></ion-icon>
+          Excluir
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
   
-  <!--<ion-list>
-    <ion-item>
-      <ion-label color="primary">Latitude</ion-label>
-      <ion-label color="danger">{{latitude}}</ion-label>
-    </ion-item>
-    <ion-item>
-  <ion-label color="primary">Longitude</ion-label>
-  <ion-label color="danger">{{longitude}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" >Speed</ion-label>
-      <ion-label color="secondery" >{{speed}}</ion-label>
-    </ion-item>
-  </ion-list>-->
-
-  <script>
-    const arrow = document.querySelector('.arrow');
-    const speed = document.querySelector('.speed-value');
-
-    navigator.geolocation.watchPosition((data)=> {
-      console.log(data);
-      speed.textContent = data.coords.speed;
-    });
-
-    </script>
-
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      
+      <ion-row  class="ion-align-items-center">
+        <!-- <ion-col size="6">
+          <ion-button (click)="logout()" color="danger" expand="block">
+            Sair
+          </ion-button>
+        </ion-col>-->
+
+        <ion-col size="12">
+          <ion-button routerLink="/cadastro" expand="block">
+            Cadastrar Veículo
+          </ion-button>
+        </ion-col>
+
+        <ion-tabs>
+          <!-- Tab bar -->
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button routerLink="/list" expand="block">
+              <ion-icon name="calendar"></ion-icon>
+              <ion-label>Veiculos</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button tab="speakers">
+              <ion-icon routerLink="/cadastro" expand="block"></ion-icon>
+              <ion-label>Add Veiculos</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button routerLink="/abastecimento" expand="block">
+              <ion-icon name="map"></ion-icon>
+              <ion-label>Abastecimento</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button routerLink="/list-abatecimento" expand="block">
+              <ion-icon name="information-circle"></ion-icon>
+              <ion-label>Lista Abastecimento</ion-label> 
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,44 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { Cadastro } from 'src/app/dados/cadastro';
+import { Abastecimentos } from '../dados/abastecimentos';
 import { Subscription } from 'rxjs';
-import { CadastroService } from 'src/app/services/cadastro.service';
+import { AbastecimentosService } from 'src/app/services/abastecimentos.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: 'list.page.html',
-  styleUrls: ['list.page.scss']
+  selector: 'app-list-abatecimento',
+  templateUrl: './list-abatecimento.page.html',
+  styleUrls: ['./list-abatecimento.page.scss'],
 })
-export class ListPage implements OnInit {
-  
-  private cadastros = new Array<Cadastro>();
-  private cadastrosSubscription: Subscription; // Subscription vai chamar os
+export class ListAbatecimentoPage implements OnInit {
+
+  private abastecimentos = new Array<Abastecimentos>();
+  private abastecimentosSubscription: Subscription; // Subscription vai chamar os
   private loading: any;
  
 
   constructor(
     private authService: AuthService,
     private loadingCtrl: LoadingController,
-    private cadastrosService: CadastroService,
+    private abastecimentosService: AbastecimentosService,
     private toastCtrl: ToastController
   ) {
-    this.cadastrosSubscription = this.cadastrosService.getCadastros().subscribe(data => {
-      this.cadastros = data;
+    this.abastecimentosSubscription = this.abastecimentosService.getAbastecimentos().subscribe(data => {
+      this.abastecimentos = data;
     });
     
   }
 
   ngOnInit() { }
 
+
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
     return this.loading.present();
   }
 
-  async deleteCadastros(id: string) {
+  async deleteAbastecimentos(id: string) {
     try {
-      await this.cadastrosService.deleteCadastro(id);
+      await this.abastecimentosService.deleteAbastecimento(id);
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }

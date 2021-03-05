@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBo0Q94z56nRYfz-n0IfVlE3Yqs-ba15Aw",
-    authDomain: "alertasms-f5bc1.firebaseapp.com",
-    databaseURL: "https://alertasms-f5bc1.firebaseio.com",
-    projectId: "alertasms-f5bc1",
-    storageBucket: "",
-    messagingSenderId: "210220222744",
-    appId: "1:210220222744:web:9c43427c0e1cf915"
+    apiKey: "AIzaSyCDyt7NsN-g8_zTLkD_nK8LrJzRK-b8AzM",
+    authDomain: "controlecusto-f0684.firebaseapp.com",
+    projectId: "controlecusto-f0684",
+    storageBucket: "controlecusto-f0684.appspot.com",
+    messagingSenderId: "132309756973",
+    appId: "1:132309756973:web:eea863548500c13d94dca4",
+    measurementId: "G-KSC1MJ6FHH"
   }
 };
 

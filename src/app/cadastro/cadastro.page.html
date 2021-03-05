@@ -1,34 +1,55 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>
-          Cadastrar 
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Cadastrar 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  
+
 <ion-content class="ion-padding">
-  <ion-list>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="cadastro.name" placeholder="Nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="cadastro.telefone" placeholder="Telefone"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="cadastro.email" placeholder="E-mail"></ion-input>
-    </ion-item>
-  </ion-list>
+<ion-list>
+
+ <!-- <ion-item>
+    <ion-label>Tipo</ion-label>
+    //<ion-select multiple="true" [value]="['Carro']"> 
+      <ion-select>
+      <ion-select-option value="Carro">Carro</ion-select-option>
+      <ion-select-option value="Moto">Moto</ion-select-option>
+      <ion-select-option value="Caminhao">Caminhão</ion-select-option>
+      <ion-select-option value="outro">Outro</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cadastro.marca" placeholder="Marca"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cadastro.modelo" placeholder="Modelo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cadastro.placa" placeholder="Placa"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cadastro.cor" placeholder="Cor"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cadastro.ano" placeholder="Ano"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cadastro.chassi" placeholder="Chassi"></ion-input>
+  </ion-item>
+</ion-list>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-button (click)="saveCadastro()" expand="block">
-      Salvar o Contato
-    </ion-button>
-  </ion-toolbar>
+<ion-toolbar>
+  <ion-button (click)="saveCadastro()" expand="block">
+    Salvar 
+  </ion-button>
+</ion-toolbar>
 </ion-footer>

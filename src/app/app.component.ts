@@ -16,26 +16,36 @@ export class AppComponent {
   private loading: any;
   
   public appPages = [
-    {
+    /*{
       title: 'Home',
       url: '/home',
       icon: 'home'
-    },
+    },*/
     {
-      title: 'Lista de Emergência',
+      title: 'Lista Veiculos',
       url: '/list',
       icon: 'list'
     },
     {
-      title: 'Cadastrar Contato',
+      title: 'Cadastrar',
       url: '/cadastro',
       icon: 'person-add'
     },
-    {
+    /*{
       title: 'Funções',
       url: '/funcoes',
       icon: 'person-add'
+    }, */
+        {
+      title: 'Abastecimentos',
+      url: '/abastecimentos',
+      icon: 'person-add'
     },
+    {
+      title: 'Lista Abastecimentos',
+      url: '/list-abatecimento',
+      icon: 'person-add'
+    },  
     
   ];
 

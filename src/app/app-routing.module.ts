@@ -11,25 +11,36 @@ const routes: Routes = [
   },
   {     // so pode acessar se tiver logado canActivate: [AuthGuard]
     path: 'home',
-    canActivate: [AuthGuard], loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    //canActivate: [AuthGuard], loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    //canActivate: [AuthGuard], loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
+    canActivate: [AuthGuard], loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   {
     path: 'list',
     canActivate: [AuthGuard], loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
-  { 
+  {
     path: 'login',
-   canActivate: [LoggedGuard], loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
-   },
-  { 
+    canActivate: [LoggedGuard], loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+  },
+  {
     path: 'cadastro',
-   loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule) 
+    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
   },
-  { 
+  {
     path: 'cadastro/:id', // essa rota vai ter o parametro id: que vai pegar o id do cadastro
-   loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule) 
+    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
   },
-  { path: 'funcoes', loadChildren: './funcoes/funcoes.module#FuncoesPageModule' },
+  {
+    path: 'abastecimentos',
+    loadChildren: './abastecimentos/abastecimentos.module#AbastecimentosPageModule'
+  },
+  {
+    path: 'abastecimentos/:id',
+    loadChildren: './abastecimentos/abastecimentos.module#AbastecimentosPageModule'
+  },
+  { path: 'list-abatecimento', loadChildren: './list-abatecimento/list-abatecimento.module#ListAbatecimentoPageModule' },
+  //{ path: 'funcoes', loadChildren: './funcoes/funcoes.module#FuncoesPageModule' },
 ];
 
 
