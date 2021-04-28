@@ -3,6 +3,7 @@ import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/dados/user';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { AuthService } from 'src/app/services/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,47 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-@ViewChild(IonSlides, {static: false}) slides: IonSlides;
-public wavesPosition: number = 0;
-private wavesDifference: number = 100;
-public userLogin: User = {};
-public userRegister: User = {};
-private loading: any;
+  @ViewChild(IonSlides, { static: false }) slides: IonSlides;
+  public wavesPosition: number = 0;
+  private wavesDifference: number = 100;
+  public userLogin: User = {};
+  public userRegister: User = {};
+  private loading: any;
 
   constructor(
     public keyboard: Keyboard,
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController
+
+  ) {
+
+   /* const functions = firebase.functions();
+    const auth = firebase.auth();
+
+    auth.setPersistence(firebase.auth.Auth.Persistence.NONE);
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        user.getIdToken()
+          .then((idToken) => {
+            console.log(idToken);
+          });
+      }
+    });
+     
+    */
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log(user);
+      } else {
+        // No user is signed in.
+      }
+    });
     
-  ) { }
+  }
+
+
 
   ngOnInit() { }
 
@@ -71,8 +99,8 @@ private loading: any;
     toast.present();
   }
 
- 
-  
+
+
 
 
 }

@@ -14,34 +14,17 @@ export class CadastroService {
 
   constructor(private afs: AngularFirestore) {
 
-    this.cadastroCollection = this.afs.collection<Cadastro>('veiculos');
 
-    //Se você adicionar um campo em cada documento que contém o usuário, poderá obter todos os documentos associados a esse usuário com:
-    //firebase.firestore().collection('veiculos').where('uid', '=', firebase.auth().currentUser.uid).get();
+    var user = firebase.auth().currentUser.uid;
+    console.log(user," usuario");
 
-    //Se você usar o UID do usuário como o ID do documento, poderá obter o documento de um usuário com:
-    //firebase.firestore().collection('veiculos').doc(firebase.auth().currentUser.uid).collection('abastecimentos');
+    this.cadastroCollection = this.afs.collection<Cadastro>('veiculos',
+     ref => ref.where('userId', '==', user));
 
-    //Se você armazenar os documentos de um usuário em uma subcoleção de um documento
-    //com o nome do usuário, poderá obter essa coleção com:
-    //firebase.firestore().collection('veiculos').doc(firebase.auth().currentUser.uid).collection('documents')
+
+
     
 
-   //s teste   firebase.firestore().collection('veiculos').doc('tWLlmFtwVLNLOe0MinvCimFy9ID2').collection('abastecimentos');
-    firebase.firestore().collection('veiculos').get()
-        .then(function(snapshot) {
-            console.log('SNAPSHOT', snapshot);
-            snapshot.forEach(function(doc) {
-                console.log(doc.exists);
-                console.log(doc);
-                console.log(doc.id);
-                console.log(doc.metadata);
-                console.log(doc.ref);
-                console.log(doc.data());
-                console.log(doc.ref.path); //pego id doc
-                console.log(doc);
-            })
-        }).catch(console.log);
 
   }
 

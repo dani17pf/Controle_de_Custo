@@ -14,39 +14,59 @@ import { LoadingController, ToastController } from '@ionic/angular';
 export class AppComponent {
 
   private loading: any;
-  
+
   public appPages = [
-    /*{
+    {
       title: 'Home',
       url: '/home',
       icon: 'home'
+    },
+   /* {
+      title: 'Principal',
+      url: '/principal',
+      icon: 'home'
     },*/
     {
-      title: 'Lista Veiculos',
+      title: 'Veiculos',
       url: '/list',
-      icon: 'list'
+      icon: 'ios-car'
     },
-    {
-      title: 'Cadastrar',
+    /*{
+      title: 'Cadastrar Veiculos',
       url: '/cadastro',
       icon: 'person-add'
     },
-    /*{
-      title: 'Funções',
-      url: '/funcoes',
-      icon: 'person-add'
-    }, */
-        {
+    {
       title: 'Abastecimentos',
       url: '/abastecimentos',
       icon: 'person-add'
-    },
+    },*/
     {
-      title: 'Lista Abastecimentos',
+      title: 'Abastecimentos',
       url: '/list-abatecimento',
+      icon: 'md-color-fill'
+    },
+    /* {
+       title: 'Manutencao',
+       url: '/manutencao',
+       icon: 'person-add'
+     },*/
+    {
+      title: 'Manutencâo',
+      url: '/list-manutencao',
+      icon: 'md-construct'
+    },
+    /*{
+      title: 'Alertas',
+      url: '/alerta',
       icon: 'person-add'
-    },  
-    
+    },*/
+    {
+      title: 'Alertas',
+      url: '/list-alerta',
+      icon: 'md-alarm'
+    },
+
   ];
 
   constructor(
@@ -66,7 +86,7 @@ export class AppComponent {
     });
   }
 
-    async logout() {
+  async logout() {
     await this.presentLoading();
 
     try {

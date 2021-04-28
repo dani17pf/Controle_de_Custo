@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Abastecimentos } from '../dados/abastecimentos';
 import { map } from 'rxjs/operators';
 import { Cadastro } from '../dados/cadastro';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,18 @@ export class AbastecimentosService {
   private abastecimentosCollection: AngularFirestoreCollection<Abastecimentos>; // acessando uma coleção "tabela"<cadastro>
   private cadastroCollection: AngularFirestoreCollection<Cadastro>;
   constructor(private afs: AngularFirestore) {
-    this.abastecimentosCollection = this.afs.collection<Abastecimentos>('Abastecimentos');
-    
-    //this.abastecimentosCollection = this.afs.collection<Abastecimentos>('veiculo').doc(id).collection('abastecimentos');
+    //this.abastecimentosCollection = this.afs.collection<Abastecimentos>('Abastecimentos');
 
-    //this.cadastroCollection = this.afs.collection('veiculo').doc(id).collection<Abastecimentos>('abastecimentos');
+    
+    var user = firebase.auth().currentUser.uid;
+    console.log(user," usuario");
+
+    this.abastecimentosCollection = this.afs.collection<Abastecimentos>('Abastecimentos',
+     ref => ref.where('userId', '==', user));
 
   }
+
+
 
   getAbastecimentos() {
     return this.abastecimentosCollection.snapshotChanges().pipe(

@@ -12,7 +12,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class ListAbatecimentoPage implements OnInit {
 
-  private abastecimentos = new Array<Abastecimentos>();
+  public abastecimentos = new Array<Abastecimentos>();
   private abastecimentosSubscription: Subscription; // Subscription vai chamar os
   private loading: any;
  
@@ -25,9 +25,16 @@ export class ListAbatecimentoPage implements OnInit {
   ) {
     this.abastecimentosSubscription = this.abastecimentosService.getAbastecimentos().subscribe(data => {
       this.abastecimentos = data;
+
+      console.log("Lista abastecimento :", data);
+    
+      
     });
     
   }
+
+  
+
 
   ngOnInit() { }
 

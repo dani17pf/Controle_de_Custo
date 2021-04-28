@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import {CadastroService} from 'src/app/services/cadastro.service'
 import { Cadastro } from 'src/app/dados/cadastro';
-
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-abastecimentos',
@@ -21,6 +21,7 @@ export class AbastecimentosPage implements OnInit {
   private abastecimentosSubscription: Subscription;
   //public cadastro: Cadastro = [];
   cadastros: Cadastro[];
+  public fGroup: FormGroup;
 
   constructor(
     private abastecimentosService: AbastecimentosService,
@@ -29,12 +30,23 @@ export class AbastecimentosPage implements OnInit {
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController,
-    private cadastroService: CadastroService
+    private cadastroService: CadastroService,
+    private fBuilder: FormBuilder
 
   ) {
     this.abastecimentosId = this.activatedRoute.snapshot.params['id'];
 
     if (this.abastecimentosId) this.loadAbastecimentos();
+
+        //validacao
+        this.fGroup = this.fBuilder.group({
+          'data' : [''],
+          'odometro' : [''],
+          'precolitro' : [''],
+          'valortotal' : [''],
+          'litros' : ['']
+        });
+
   }
 
   ngOnInit() {
@@ -54,6 +66,8 @@ export class AbastecimentosPage implements OnInit {
   async saveAbastecimentos() {
     await this.presentLoading();
 
+    this.abastecimentos.userId = this.authService.getAuth().currentUser.uid;
+
     if (this.abastecimentosId) {
       try {
         await this.abastecimentosService.updateAbastecimento(this.abastecimentosId, this.abastecimentos);
@@ -71,7 +85,7 @@ export class AbastecimentosPage implements OnInit {
 
         this.navCtrl.navigateBack('/list-abatecimento');
       } catch (error) {
-        this.presentToast('Erro ao tentar salvar a');
+        this.presentToast('Todos os campos são obrigatório !!');
         this.loading.dismiss();
       }
     }

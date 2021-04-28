@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Alertas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="!alerta.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let alerta of alerta">
+      <ion-item button [routerLink]="['/alerta', alerta.id]">
+        <!--<ion-avatar slot="start">
+         //espaço pra colocar imagens dos contatos
+        </ion-avatar>-->
+
+        <ion-item lines="full">
+          
+          <ion-label> Descricao
+            <p>{{ alerta.descricao }}</p>
+
+           <!--  <ion-label> Ultima Data
+              <p><ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="alerta.ultimadata"></ion-datetime></p>
+          </ion-label> -->
+
+            <ion-label> Ultimo KM
+              <p>{{ alerta.ultimokm }}</p>
+            </ion-label>
+ 
+            <ion-label> Tipo Alerta
+              <p>{{ alerta.tipoalerta }}</p>
+            </ion-label>
+
+            <ion-label> Mês do Alerta
+             <!-- <p><ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="alerta.tempoalerta"></ion-datetime></p>-->
+              <p><ion-input  type="number" value="12" [(ngModel)]="alerta.tempoalerta"></ion-input></p>
+            </ion-label>
+             
+
+            <ion-label> KM Alerta
+              <p>{{ alerta.kmalerta }}</p>
+            </ion-label>
+
+          </ion-label>
+          
+        </ion-item>
+
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteAlerta(alerta.id)">
+          <ion-icon slot="top" name="trash"></ion-icon>
+          Excluir
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+ <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button >
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" routerLink="/list-manutencao" >
+        <ion-icon name="logo-google"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      
+      <ion-row  class="ion-align-items-center">
+        <!-- <ion-col size="6">
+          <ion-button (click)="logout()" color="danger" expand="block">
+            Sair
+          </ion-button>
+        </ion-col>-->
+        
+        <!--
+        <ion-col size="12" >
+          <ion-button routerLink="/list" routerDirection="forward"  fill="outline" color="medium">
+            <ion-icon name="add"></ion-icon> List Veiculos
+          </ion-button>
+          <ion-button routerLink="/list-abatecimento" routerDirection="forward"  fill="outline" color="warning" >
+            <ion-icon name="add"></ion-icon> List Abastecimento  
+          </ion-button>
+          <ion-button routerLink="/list-manutencao" routerDirection="forward"  fill="outline" color="medium" >
+            <ion-icon name="add"></ion-icon> List Manutenção  
+          </ion-button>
+        </ion-col> -->
+
+  
+
+        <ion-col size="12">
+          <ion-button routerLink="/alerta" expand="block">
+            Cadastrar Alerta
+          </ion-button>
+        </ion-col>
+
+        
+
+        
+
+       <!--  <ion-tabs>
+           Tab bar 
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button routerLink="/list" expand="block">
+              <ion-icon name="calendar"></ion-icon>
+              <ion-label>Veiculos</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button tab="speakers">
+              <ion-icon routerLink="/cadastro" expand="block"></ion-icon>
+              <ion-label>Add Veiculos</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button routerLink="/abastecimento" expand="block">
+              <ion-icon name="map"></ion-icon>
+              <ion-label>Abastecimento</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button routerLink="/list-abatecimento" expand="block">
+              <ion-icon name="information-circle"></ion-icon>
+              <ion-label>Lista Abastecimento</ion-label> 
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs> -->
+
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+

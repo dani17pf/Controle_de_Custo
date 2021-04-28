@@ -5,7 +5,7 @@ import { CadastroService } from 'src/app/services/cadastro.service';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,6 +17,7 @@ export class CadastroPage implements OnInit {
   public cadastro: Cadastro = {};
   private loading: any;
   private cadastroSubscription: Subscription;
+  public fGroup: FormGroup;
 
   constructor(
     private cadastroService: CadastroService,
@@ -24,20 +25,28 @@ export class CadastroPage implements OnInit {
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private authService: AuthService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private fBuilder: FormBuilder
   ) {
     this.cadastroId = this.activatedRoute.snapshot.params['id'];
 
     if (this.cadastroId) this.loadCadastro();
+
+    //validacao
+    this.fGroup = this.fBuilder.group({
+      'marca' : [''],
+      'modelo' : [''],
+      'placa' : [''],
+      'cor' : [''],
+      'ano' : [''],
+      'chassi' : ['']
+    });
   }
 
 
   ngOnInit() {
   }
 
-  //ngOnDestroy() {
-    //if (this.cadastroSubscription) this.cadastroSubscription.unsubscribe();
-  //}
 
   loadCadastro() {
     this.cadastroSubscription = this.cadastroService.getCadastro(this.cadastroId).subscribe(data => {
@@ -48,7 +57,7 @@ export class CadastroPage implements OnInit {
   async saveCadastro() {
     await this.presentLoading();
 
-    //this.cadastro.userId = this.authService.getAuth().currentUser.uid;
+    this.cadastro.userId = this.authService.getAuth().currentUser.uid;
 
     if (this.cadastroId) {
       try {
@@ -69,7 +78,7 @@ export class CadastroPage implements OnInit {
 
         this.navCtrl.navigateBack('/list');
       } catch (error) {
-        this.presentToast('Erro ao tentar salvar');
+        this.presentToast('Todos os campos são obrigatório !!');
         this.loading.dismiss();
       }
     }

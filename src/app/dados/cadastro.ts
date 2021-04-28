@@ -6,4 +6,5 @@ export interface Cadastro {
     cor?: string;
     ano?: string;
     chassi?: string;
+    userId?: string;
 }

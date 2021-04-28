@@ -56,15 +56,6 @@
             <ion-label> Placa
               <p>{{ cadastro.placa }}</p>
             </ion-label>
-            <ion-label> Cor
-              <p>{{ cadastro.cor }}</p>
-            </ion-label>
-            <ion-label> Ano
-              <p>{{ cadastro.ano }}</p>
-            </ion-label>
-            <ion-label> Chassi
-              <p>{{ cadastro.chassi }}</p>
-            </ion-label>
 
           </ion-label>
           
@@ -111,12 +102,20 @@
             Sair
           </ion-button>
         </ion-col>-->
-        <ion-col size="12" *ngIf="cadastros.length">
-          
-          <ion-button routerLink="/abastecimentos" routerDirection="forward" expand="full" fill="outline" color="tertiary">
-            <ion-icon name="add"></ion-icon> Abastecimentos 
+
+       <!-- <ion-col size="12" *ngIf="cadastros.length"> --> 
+          <ion-col>
+
+          <ion-button routerLink="/list-abatecimento" routerDirection="forward"  fill="outline" color="medium">
+            <ion-icon name="md-color-fill"></ion-icon> abasteci...
           </ion-button>
+          <ion-button routerLink="/list-manutencao" routerDirection="forward"  fill="outline" color="warning" >
+            <ion-icon name="md-construct" ></ion-icon> Manutencão...  
+          </ion-button>
+          
         </ion-col>
+
+  
 
         <ion-col size="12">
           <ion-button routerLink="/cadastro" expand="block">
@@ -126,30 +125,7 @@
 
         
 
-       <!--  <ion-tabs>
-           Tab bar 
-          <ion-tab-bar slot="bottom">
-            <ion-tab-button routerLink="/list" expand="block">
-              <ion-icon name="calendar"></ion-icon>
-              <ion-label>Veiculos</ion-label>
-            </ion-tab-button>
         
-            <ion-tab-button tab="speakers">
-              <ion-icon routerLink="/cadastro" expand="block"></ion-icon>
-              <ion-label>Add Veiculos</ion-label>
-            </ion-tab-button>
-        
-            <ion-tab-button routerLink="/abastecimento" expand="block">
-              <ion-icon name="map"></ion-icon>
-              <ion-label>Abastecimento</ion-label>
-            </ion-tab-button>
-        
-            <ion-tab-button routerLink="/list-abatecimento" expand="block">
-              <ion-icon name="information-circle"></ion-icon>
-              <ion-label>Lista Abastecimento</ion-label> 
-            </ion-tab-button>
-          </ion-tab-bar>
-        </ion-tabs> -->
 
       </ion-row>
     </ion-grid>

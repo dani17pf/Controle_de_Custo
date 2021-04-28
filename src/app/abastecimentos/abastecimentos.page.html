@@ -12,33 +12,38 @@
 
 
 <ion-content class="ion-padding">
+  <form [formGroup]="fGroup">
   <ion-list>
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="abastecimentos.data" placeholder="data"></ion-input>
+      <ion-label position="floating">Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="abastecimentos.data" formControlName="data"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="abastecimentos.odometro" placeholder="odometro"></ion-input>
+      <ion-label position="floating">Odometro</ion-label>
+      <ion-input type="number" [(ngModel)]="abastecimentos.odometro" formControlName="odometro"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="abastecimentos.combustivel" placeholder="combustivel"></ion-input>
+      <ion-label position="floating">Preço Litro</ion-label>
+      <ion-input type="number" [(ngModel)]="abastecimentos.precolitro" formControlName="precolitro"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="abastecimentos.precolitro" placeholder="precolitro"></ion-input>
+      <ion-label position="floating">Valor Total</ion-label>
+      <ion-input type="number" [(ngModel)]="abastecimentos.valortotal" formControlName="valortotal"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="abastecimentos.valortotal" placeholder="ValorTotal"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="abastecimentos.litros" placeholder="litros"></ion-input>
+      <ion-label position="floating">Litros</ion-label>
+      <ion-input type="number" [(ngModel)]="abastecimentos.litros" formControlName="litros"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-item>
-    <ion-select placeholder="Veiculo" value="brown" okText="Salvar" cancelText="Cancelar" [(ngModel)]="abastecimentos.cadastro">
+</form>
+
+  
+    <ion-select  placeholder="Veiculo" value="brown" okText="Salvar" cancelText="Cancelar"  >
       <ion-select-option *ngFor="let cadastro of cadastros">Placa : {{ cadastro.placa }}</ion-select-option>
     </ion-select>
-  </ion-item>
+ 
 
 </ion-content>
 

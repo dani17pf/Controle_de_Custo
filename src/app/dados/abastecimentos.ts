@@ -1,9 +1,9 @@
 export interface Abastecimentos {
     id?: string;
-    data?: string;
+    data?: Date;
     odometro?: string;
-    combustivel?: string;
     precolitro?: string;
     valortotal?: string;
     litros?: string;
+    userId?: string;
 }

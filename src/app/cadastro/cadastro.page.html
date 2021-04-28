@@ -11,39 +11,40 @@
 </ion-header>
 
 
-<ion-content class="ion-padding">
-<ion-list>
+<ion-content >
+  <form [formGroup]="fGroup">
 
- <!-- <ion-item>
-    <ion-label>Tipo</ion-label>
-    //<ion-select multiple="true" [value]="['Carro']"> 
-      <ion-select>
-      <ion-select-option value="Carro">Carro</ion-select-option>
-      <ion-select-option value="Moto">Moto</ion-select-option>
-      <ion-select-option value="Caminhao">Caminhão</ion-select-option>
-      <ion-select-option value="outro">Outro</ion-select-option>
-    </ion-select>
-  </ion-item> -->
+    <ion-list>
 
   <ion-item>
-    <ion-input type="text" [(ngModel)]="cadastro.marca" placeholder="Marca"></ion-input>
+    <ion-label position="floating">Marca</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.marca" formControlName="marca" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="text" [(ngModel)]="cadastro.modelo" placeholder="Modelo"></ion-input>
+    <ion-label position="floating">Modelo</ion-label>
+    <!--<ion-input type="text" [(ngModel)]="cadastro.modelo" placeholder="Modelo" formControlName="modelo"></ion-input>-->
+    <ion-input type="text" [(ngModel)]="cadastro.modelo" formControlName="modelo"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="text" [(ngModel)]="cadastro.placa" placeholder="Placa"></ion-input>
+    <ion-label position="floating">Placa</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.placa" formControlName="placa"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="text" [(ngModel)]="cadastro.cor" placeholder="Cor"></ion-input>
+    <ion-label position="floating">Cor</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.cor" formControlName="cor"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="text" [(ngModel)]="cadastro.ano" placeholder="Ano"></ion-input>
+    <ion-label position="floating">Ano</ion-label>
+    <ion-input type="number" [(ngModel)]="cadastro.ano" formControlName="ano"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="text" [(ngModel)]="cadastro.chassi" placeholder="Chassi"></ion-input>
+    <ion-label position="floating">Chassi</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.chassi" formControlName="chassi"></ion-input>
   </ion-item>
 </ion-list>
+
+</form>
+
 </ion-content>
 
 <ion-footer>

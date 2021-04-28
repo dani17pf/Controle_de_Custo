@@ -12,7 +12,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class ListPage implements OnInit {
   
-  private cadastros = new Array<Cadastro>();
+  public cadastros = new Array<Cadastro>();
   private cadastrosSubscription: Subscription; // Subscription vai chamar os
   private loading: any;
  

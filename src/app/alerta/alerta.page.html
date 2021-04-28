@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Alertas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list>
+
+    <ion-item  [formGroup]="fGroup">
+      <ion-label position="floating">Descricao</ion-label>
+      <ion-input type="text" [(ngModel)]="alerta.descricao" placeholder="Ex : Filtro de ar " formControlName="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ultima Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="alerta.ultimadata"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ultimo km</ion-label>
+      <ion-input type="number" [(ngModel)]="alerta.ultimokm"></ion-input>
+    </ion-item>
+    <!--<ion-item>
+      <ion-label position="floating">Tipo Alerta</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="alerta.tipoalerta"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tempo Alerta</ion-label>
+      <ion-datetime [max]="today" [(ngModel)]="alerta.tempoalerta"
+      [dayShortNames]="customDayShortNames"
+      displayFormat=" MMM "
+      monthShortNames="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"></ion-datetime>
+     
+    </ion-item> -->
+
+    <ion-item  [formGroup]="fGroup">
+      <ion-label position="floating">Mês para o Alerta</ion-label>
+      <ion-input  type="number" [(ngModel)]="alerta.tempoalerta" formControlName="tempoalerta" ></ion-input>
+
+    </ion-item>
+
+    <ion-item >
+      <ion-label position="floating">km Alerta</ion-label>
+      <ion-input  type="number" [(ngModel)]="alerta.kmalerta"></ion-input>
+    </ion-item>
+
+   <!-- <ion-item>
+      <ion-label>MMMM</ion-label>
+      <ion-datetime displayFormat="MMMM" value="2012-12-15T13:47:20.789"></ion-datetime>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label>YYYY</ion-label>
+      <ion-datetime [pickerOptions]="customPickerOptions" [ngModel]="custonDate" placeholder="Custom Options" displayFormat="YYYY" ></ion-datetime>
+    </ion-item> -->
+
+
+
+
+
+
+    <ion-item>
+      <ion-select placeholder="Tipo Alerta"  [(ngModel)]="alerta.tipoalerta" value="RegraAlerta" okText="Salvar" cancelText="Cancelar">
+        <ion-label>Regra do alerta</ion-label>
+        <ion-select-option>Data </ion-select-option>
+        <ion-select-option>Kilometro </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+
+
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+    <ion-button (click)="saveAlerta()" expand="block">
+      Salvar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

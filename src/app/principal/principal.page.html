@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Principal 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+<!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
+<ion-reorder-group *ngFor="let alerta of alerta" disabled="false">
+  <!-- Default reorder icon, end aligned items -->
+  <ion-item>
+    <ion-label  class="col text-center" color="dark">
+     Novo Alerta
+    </ion-label>
+  </ion-item>
+
+
+  
+  <ion-item>
+    <ion-chip outline color="tertiary">
+      <ion-icon   name="checkmark-circle" color="dark"></ion-icon>
+      <ion-label><p>Descricao</p></ion-label>
+    </ion-chip>
+
+    <ion-chip outline color="tertiary">
+      <ion-icon name="md-alarm" color="dark"></ion-icon>
+      <ion-label><p>Falta {{ alerta.dias }} dias para {{ alerta.descricao }} - {{ alerta.data }}</p></ion-label>
+    </ion-chip>
+
+
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <!-- copia-->
+
+ 
+</ion-reorder-group>
+
+<ion-chip outline color="tertiary">
+  <ion-icon name="md-alarm" color="dark"></ion-icon>
+  <ion-label><p>{{ totalAbast }}</p></ion-label>
+</ion-chip>
+<ion-chip outline color="tertiary">
+  <ion-icon name="md-alarm" color="dark"></ion-icon>
+  <ion-label><p>{{ totalMnt }}</p></ion-label>
+</ion-chip>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      
+      <ion-row  class="ion-align-items-center">
+
+        <ion-col size="12">
+          <ion-button routerLink="/alerta" expand="block">
+            Cadastrar Alerta
+          </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+

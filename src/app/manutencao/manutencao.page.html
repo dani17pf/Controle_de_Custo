@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Manutençoes 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="fGroup">
+  <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">Descricao</ion-label>
+      <ion-input type="text" [(ngModel)]="manutencao.descricao" formControlName="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="manutencao.data" formControlName="data"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input  type="number" [(ngModel)]="manutencao.valor" formControlName="valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">KM</ion-label>
+      <ion-input  type="number" [(ngModel)]="manutencao.km" formControlName="km"></ion-input>
+    </ion-item>
+
+  </ion-list>
+</form>
+
+  
+<ion-select  placeholder="Veiculo" value="brown" okText="Salvar" cancelText="Cancelar" >
+  <ion-select-option *ngFor="let cadastro of cadastros">Placa : {{ cadastro.placa }}</ion-select-option>
+</ion-select>
+
+</ion-content>
+
+<ion-footer>
+<ion-toolbar>
+  <ion-button (click)="saveManutencao()" expand="block">
+    Salvar 
+  </ion-button>
+</ion-toolbar>
+</ion-footer>

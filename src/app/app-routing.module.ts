@@ -11,9 +11,9 @@ const routes: Routes = [
   },
   {     // so pode acessar se tiver logado canActivate: [AuthGuard]
     path: 'home',
-    //canActivate: [AuthGuard], loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    canActivate: [AuthGuard], loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
     //canActivate: [AuthGuard], loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
-    canActivate: [AuthGuard], loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+   // canActivate: [AuthGuard], loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   {
     path: 'list',
@@ -39,8 +39,43 @@ const routes: Routes = [
     path: 'abastecimentos/:id',
     loadChildren: './abastecimentos/abastecimentos.module#AbastecimentosPageModule'
   },
-  { path: 'list-abatecimento', loadChildren: './list-abatecimento/list-abatecimento.module#ListAbatecimentoPageModule' },
-  //{ path: 'funcoes', loadChildren: './funcoes/funcoes.module#FuncoesPageModule' },
+  {
+    path: 'list-abatecimento',
+    loadChildren: './list-abatecimento/list-abatecimento.module#ListAbatecimentoPageModule'
+  },
+  {
+    path: 'manutencao',
+    loadChildren: './manutencao/manutencao.module#ManutencaoPageModule'
+  },
+  {
+    path: 'manutencao/:id',
+    loadChildren: './manutencao/manutencao.module#ManutencaoPageModule'
+  },
+  {
+    path: 'list-manutencao',
+    loadChildren: './list-manutencao/list-manutencao.module#ListManutencaoPageModule'
+  },
+  {
+    path: 'alerta',
+    loadChildren: './alerta/alerta.module#AlertaPageModule'
+  },
+  {
+    path: 'alerta/:id',
+    loadChildren: './alerta/alerta.module#AlertaPageModule'
+  },
+  {
+    path: 'list-alerta',
+    loadChildren: './list-alerta/list-alerta.module#ListAlertaPageModule'
+  },
+  {
+    path: 'user',
+    loadChildren: './user/user.module#UserPageModule'
+  },
+ // {
+   // path: 'principal',
+   // loadChildren: './principal/principal.module#PrincipalPageModule'
+  //},
+
 ];
 
 
